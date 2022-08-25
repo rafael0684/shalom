@@ -1,0 +1,20 @@
+{% load static %}
+
+
+<p class="listaMusicas" >Songs: </p>
+<div class="listaMusicas_wraper">
+<ul>
+    {% if musicas %}
+    {% for musica in musicas %}
+            
+    <li class="listaMusicas__musica">
+        <img src="{{ musica.cover_pic.url }}" alt="" class="musica__img">
+        <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p>{{ musica.titulo_musica }} por {{musica.artista}}</p></a>
+                
+    </li>
+            
+    {% endfor %}
+    {% else %}
+    {% endif %}            
+</ul>
+</div>

@@ -1,0 +1,260 @@
+@font-face {
+    font-family: 'icones';
+    src: url(../font/icones.ttf);
+}
+blockquote,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-decoration: none;
+  
+} 
+
+body {
+    
+    margin-top: 10px;
+    background-color: white;
+    font-family: 'Open Sans', 'icones', sans-serif;
+    color: black;
+    
+}
+
+.topnav__logo{
+    width: 70px;
+    
+}
+
+.topnav__container{
+    display: flex;
+    flex-wrap: wrap;
+    
+    align-items: center;
+}
+.topnav__title{
+    padding-left: 10px;
+    font-size: medium;
+}
+.topnav__text{
+  
+  text-align: center;
+}
+/* Style the navigation menu */
+.topnav {
+    /* overflow: hidden; */
+    color: black;
+    background-color: rgb(255, 255, 255);
+    position: block;
+    
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+    font-size: 1em;
+    text-transform:uppercase;
+
+  }
+
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: rgb(0, 0, 0);
+    padding: 10px 12px;
+    text-decoration:none;
+    font-size: 17px;
+    display: block;
+    text-align: right;
+    
+  }
+  
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: rgb(255, 255, 255);
+    display: block;
+    position: absolute;
+    right: 14px;
+    top: 10px;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color: #c6c6c6;
+    color: white;
+  }
+
+.listaMusicas{
+    font-size: large;
+    padding-left: 1em;
+    
+    
+}
+.musica__titulo {
+    
+    padding-left: 1em;
+    margin: 0;
+}
+.listaMusicas__musica{
+    display: flex;
+    align-items: center;
+    
+}
+.listaMusicas__musica a{
+  color: black;
+}
+.musica__img{
+    width: 60px;
+
+}
+
+.footer{
+    
+    padding-top: 2em;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline-start: 0;
+}
+  .footer__texto{
+    
+    text-align: center;
+    display: grid;
+    font-size: xx-small;
+    margin: 0 10% 0 0;
+}
+.footer__logo{
+    height: 60px;
+
+}
+.container{
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+  border-radius: 20px;
+}
+
+.item__img{
+  border-radius: 20px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  margin: 10px;
+  
+}
+.principal__item img:hover{
+  opacity: 0.5;
+  
+}
+.container__principal{
+  
+  margin: 1em 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content:center;
+  max-width: 950px;
+  
+}
+
+.musica{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  padding: 1em;
+  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+  border-radius: 20px;
+  
+}
+
+.listaMusicas_wraper{
+  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.094);
+  border-radius: 20px;
+  padding: 0 1em;
+}
+
+.musica__heading{
+  display: flex;
+  flex-direction: column;
+  align-items:baseline;
+  flex-wrap: wrap;
+  max-width: 100vw;
+
+}
+
+.heading__img{
+  border-radius: 20px;
+  width:330px;
+  height: 200px;
+  object-fit: cover;
+  
+}
+.musica__artist{
+  padding: 0;
+  margin: 0;
+  color: darkgray;
+  max-width: 100vw;
+  
+}
+.musica__lyrics{
+  margin: 1em 0;
+  max-width: 100vw;
+  font-family: 'icones';
+}
+.musica__releaseYear{
+  color: darkgrey;
+  font-style: italic;
+  font-size: smaller;
+ 
+}
+
+form{
+
+  padding:1em 0;
+}
+
+.search-bar input{
+  width:75vw;
+  border-radius: 20px;
+  border-color: #c6c6c6;
+  color: black;
+  opacity: 0.5;
+  padding: 0.5em 1em;
+  margin: 0;
+  
+
+}
+.search-bar :active :focus{
+  text-decoration: none;
+}
+.search-btn{
+  border-radius: 20px;
+  
+
+}
+.barra_pesquisa{
+  display: flex;
+  justify-content: center;
+}
