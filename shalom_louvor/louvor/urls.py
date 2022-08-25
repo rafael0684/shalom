@@ -8,6 +8,6 @@ urlpatterns = [
     path('musica/<int:musica_id', views.musica)
     
 ]
-
+ 
 
     
