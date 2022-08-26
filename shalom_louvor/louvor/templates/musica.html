@@ -6,11 +6,11 @@
         
        <div class="musica">
             <div class="musica__heading">
-                <img class="heading__img" src= "{{ musica.cover_pic.url }}" alt="">
+                <img class="heading__img" src= "{{ musica.nome_artista.artista_pic.url }}" alt="">
                 <h2 class="heading__title">{{musica.titulo_musica}}</h2>
                 
             </div>
-            <p class="musica__artist">by {{musica.artista}}</p>
+            <p class="musica__artist">by {{musica.nome_artista}}</p>
             <p class="musica__releaseYear">{{musica.release_year}}</p>
             
             <pre class="musica__lyrics">

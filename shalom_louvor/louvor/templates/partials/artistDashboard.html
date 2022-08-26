@@ -4,7 +4,7 @@
         {% if musicas %}
         {% for musica in musicas %}
          <li class="principal__item">
-             <a href="{% url 'musica' musica.id %}"><img class="item__img" src="{{musica.cover_pic.url}}" alt=""></a>
+             <a href="{% url 'musica' musica.id %}"><img class="item__img" src="{{musica.nome_artista.artista_pic.url}}" alt=""></a>
          </li>
         
     
