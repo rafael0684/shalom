@@ -16,3 +16,5 @@ class Musica(models.Model):
     lyrics = models.TextField()
     data_musica = models.DateField(default=datetime.now, blank=True)
     cover_pic = models.ImageField(blank=True, upload_to='cover_pic')
+    
+
