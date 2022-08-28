@@ -23,8 +23,8 @@
 
       </div>
       <div class="barra_pesquisa">
-        <form action="" class="search-bar">
-        <input type="search" name="search" pattern=".*\S.*" >
+        <form action="{% url 'buscar' %}" class="search-bar" >
+        <input type="text" name="buscar" placeholder="Buscar por musicas">
         <button class="search-btn" type="submit">
             <span>Search</span>
         </button>

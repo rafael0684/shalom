@@ -15,6 +15,11 @@
             
     {% endfor %}
     {% else %}
+    <li class="listaMusicas__musica">
+        <img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img">
+        <a href="{% url 'index' %}" class="musica__titulo"><p>Nenhum resultado encontrado. Tente novamente</p></a>
+                
+    </li>
     {% endif %}            
 </ul>
 </div>
