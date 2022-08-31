@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 # Create your views here.
 from django.http import HttpResponse
 
-from .models import Musica
+from .models import Musica, Artista
 
 
 def index(request):
@@ -46,3 +46,4 @@ def buscar(request):
             }
 
     return render(request, 'buscar.html', dados)
+

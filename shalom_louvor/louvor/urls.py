@@ -6,7 +6,8 @@ urlpatterns = [
     path('songs', views.songs, name='songs' ),
     path('buscar', views.buscar, name='buscar' ),
     path('<int:musica_id>', views.musica, name='musica'),
-    path('musica/<int:musica_id', views.musica)
+    path('musica/<int:musica_id', views.musica),
+    
     
 ]
  

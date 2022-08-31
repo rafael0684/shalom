@@ -1,0 +1,32 @@
+{% load static %}
+
+<header>
+    <div class="header__menu">
+        
+        <div class= "menu__descricao">
+            <a href="{% url 'index' %}"><img class="menu__logo" src="static/img/shalom_-_logo.png" alt=""></a>
+            <div class="menu__title">
+                <!-- <h2 class="topnav__title">SHALOM OXFORD</h2> -->
+                <h2 class="menu__title-text" >MINISTERIO DE LOUVOR</h2>
+            </div>
+        </div>
+
+        <div class="menu__links">
+          <div class="menu__links-link"><a  href="{% url 'index' %}">Home</a></div>
+          <div class="menu__links-link"><a  href="{% url 'songs' %}">Songs</a></div>
+          
+        </div>
+    
+    </div>   
+    
+    <div class="barra_pesquisa">
+        <form action="{% url 'buscar' %}" class="search-bar" >
+            <input type="text" name="buscar" placeholder="Buscar por musicas">
+            <button class="search-btn" type="submit">
+                <span>Search</span>
+            </button>
+        </form>
+    </div>
+
+    
+</header>
