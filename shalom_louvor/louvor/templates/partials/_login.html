@@ -1,0 +1,45 @@
+{% block content %}
+{% load static %}
+
+    <div id="modalControlLogin" style="display:none">
+        <div class="formulario__background">
+            <div class="formulario">
+                <div class="formulario__close"><button class="formulario__close-btn" onclick="esconderModal()">&times</button></div>
+                <form action="{% url 'login' %}" method="POST">
+                    
+                    <div class="formulario__campo">
+                        
+                        <div class="formulario__campo-item">
+                            <label for="email_usuario"><b>Email</b></label>
+                            <input type="email" class="formulario__campo-input" name="email" placeholder="Ex.:rafael@email.com" required>
+                        </div>
+                        
+                        <div class="formulario__campo-item">
+                            <label for="password"><b>Senha</b></label>
+                            <input type="password" class="formulario__campo-input" name="password" placeholder="Digite sua senha" required>
+                        </div>
+                        
+                        <div class="formulario__campo-btn">
+                            <button class="formulario__btn" type="submit">Login</button>
+                            <button class="formulario__btn" type="sign-up" onclick="esconderModal(), mostrarModalCadastro()">Ainda não tem conta? Clique aqui</button>
+                        </div>
+                        {% csrf_token %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+function mostrarModalLogin(){
+    var modal = document.getElementById("modalControlLogin");
+    modal.style.display = "block";
+    }
+    function esconderModal(){
+    var modalLogin = document.getElementById("modalControlLogin");
+    modalLogin.style.display = "none"
+    var modalCadastro = document.getElementById("modalControlCadastro");
+    modalCadastro.style.display = "none"
+    }
+</script>
+{% endblock %}

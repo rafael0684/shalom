@@ -112,7 +112,7 @@ body {
 .search-bar input{
   width:75vw;
   border-radius: 20px;
-  border-color: #a4a4a4;
+  border-color: #787777;
   color: black;
   opacity: 0.5;
   padding: 0.5em 1em;
@@ -227,6 +227,7 @@ body {
 
 }
 
+
 /* <!-- END Songs --> */
 
 
@@ -281,6 +282,77 @@ body {
 }
 
 /* <!-- END Musica --> */
+
+/* <!-- Formulario Cadastro / Login --> */
+
+.formulario__close{
+  text-align: right;
+}
+.formulario__close-btn {
+  font-size: large;
+  border: none;
+  color: black;
+  background-color: white;
+}
+
+.formulario__close :hover{
+  opacity: 0.5;
+  
+}
+.formulario__background{
+  position: fixed; /* Stay in place */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow:hidden;
+  background-color:rgba(255, 255, 255, 0.744);
+  display: flex;
+  
+}
+.formulario{
+  position: sticky;
+  z-index: 2;
+  width: 330px;
+  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.579);
+  border-radius: 20px;
+  padding: 1em 1em;
+  margin: auto;
+  background-color: white;
+}
+.formulario__campo{
+  padding:0 1em;
+  
+}
+.formulario__campo-item{
+  margin: 1em 0;
+}
+.formulario__campo-input{
+  padding: 0.5em;
+  border-radius: 20px;
+  border-color: #787777;
+  color: black;
+  opacity: 0.5;
+  width:290px;
+  
+}
+.formulario__campo-btn{
+  padding: 0.5em;
+  text-align: center;
+}
+.formulario__btn{
+  padding: 0.5em 1em;
+  border-radius: 15px;
+  border-color: #787777;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.061);
+  margin: 0.5em;
+}
+.modalControl{
+  position: fixed;
+}
+/* <!-- END Formulario Cadastro / Login --> */
 
 /* <!-- Footer --> */
 

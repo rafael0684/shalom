@@ -8,7 +8,7 @@
     {% for musica in musicas %}
             
     <li class="listaMusicas__musica">
-        <img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img">
+        <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img" ></a>
         <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p>{{ musica.titulo_musica }} por {{musica.nome_artista}}</p></a>
                 
     </li>

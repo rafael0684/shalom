@@ -12,8 +12,9 @@
         </div>
 
         <div class="menu__links">
-          <div class="menu__links-link"><a  href="{% url 'index' %}">Home</a></div>
           <div class="menu__links-link"><a  href="{% url 'songs' %}">Songs</a></div>
+          <div class="menu__links-link"><a  href="#" onclick="mostrarModalCadastro()">Sign-up</a></div>
+          <div class="menu__links-link"><a  href="#" onclick="mostrarModalLogin()">Login</a></div>
           
         </div>
     
@@ -30,3 +31,5 @@
 
     
 </header>
+{% include 'partials/_login.html' %}
+{% include 'partials/_cadastro.html' %}

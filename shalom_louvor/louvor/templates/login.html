@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<main>
+    <div class="formulario__background"></div>
+    <div class="formulario">
+        <div class="formulario__close"><button class="formulario__close-btn" onclick="history.go(-1);">&times</button></div>
+        <form action="{% url 'login' %}" method="POST">
+            
+            <div class="formulario__campo">
+                
+                <div class="formulario__campo-item">
+                    <label for="email_usuario"><b>Email</b></label>
+                    <input type="email" class="formulario__campo-input" name="email" placeholder="Ex.:rafael@email.com" required>
+                </div>
+                
+                <div class="formulario__campo-item">
+                    <label for="password"><b>Senha</b></label>
+                    <input type="password" class="formulario__campo-input" name="password" placeholder="Digite sua senha" required>
+                </div>
+                
+                <div class="formulario__campo-btn">
+                    <button class="formulario__btn" type="submit">Login</button>
+                    <button class="formulario__btn" type="sign-up" onclick="exibirCriarConta()">Ainda não tem conta? Clique aqui</button>
+                </div>
+                {% csrf_token %}
+            </div>
+        </form>
+    </div>
+</main>
+<script>
+function exibirCriarConta(){
+         location.href = "{% url 'cadastro' %}";
+    } 
+
+    </script>
+{% endblock %}
