@@ -71,6 +71,10 @@ body {
         border-radius: 10px;
         
     }
+    .menu__links-nome_usuario{
+        font-style: italic;
+        color: #787777;
+    }
     .menu__links-link a:hover{
         background-color: #ddd;
         color: black;

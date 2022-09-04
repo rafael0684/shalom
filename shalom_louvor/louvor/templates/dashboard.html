@@ -1,1 +1,9 @@
-<h1>Dashboard</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <main>
+        <div class="listaMusicas"><p>Dashboard {{user.username}}</p></div>
+        {% include 'partials/_songs.html' %}
+    </main>
+    
+{% endblock %}

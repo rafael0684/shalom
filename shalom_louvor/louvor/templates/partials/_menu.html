@@ -12,10 +12,15 @@
         </div>
 
         <div class="menu__links">
-          <div class="menu__links-link"><a  href="{% url 'songs' %}">Songs</a></div>
-          <div class="menu__links-link"><a  href="#" onclick="mostrarModalCadastro()">Sign-up</a></div>
-          <div class="menu__links-link"><a  href="#" onclick="mostrarModalLogin()">Login</a></div>
-          
+            {% if user.is_authenticated %}
+            <span class="menu__links-nome_usuario">Oie {{ user.first_name }} {{user.last_name}}!  <br></span>
+            <div class="menu__links-link"><a  href="{% url 'dashboard' %}">Minhas musicas</a></div>
+            <div class="menu__links-link"><a  href="{% url 'songs' %}">Songs</a></div>
+            <div class="menu__links-link"><a  href="{% url 'logout' %}">Sair</a></div>
+            {% else %}
+            <div class="menu__links-link"><a  href="#" onclick="mostrarModalCadastro()">Sign-up</a></div>
+            <div class="menu__links-link"><a  href="#" onclick="mostrarModalLogin()">Login</a></div>
+            {% endif %}
         </div>
     
     </div>   
