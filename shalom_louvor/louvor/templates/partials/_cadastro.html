@@ -1,53 +1,40 @@
 {% block content %}
 {% load static %}
 
-    <div id="modalControlCadastro" style="display:none">
-        <div class="formulario__background">
-            <div class="formulario">
-                <div class="formulario__close"><button class="formulario__close-btn" onclick="esconderModal()">&times</button></div>
-                <form action="{% url 'cadastro' %}" method="POST">
+<!-- cadastro Modal -->
+<div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="cadastroModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Cadastro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                    <form action="{% url 'cadastro' %}" method="POST">
                     
-                    <div class="formulario__campo">
-                        <div class="formulario__campo-item">
-                            <label for="nome"><b>Nome</b></label>
-                            <input type="text" class="formulario__campo-input" name="nome" placeholder="Ex.:Rafael" required>
-                        </div>
-                        <div class="formulario__campo-item">
-                            <label for="sobrenome"><b>Sobrenome</b></label>
-                            <input type="text" class="formulario__campo-input" name="sobrenome" placeholder="Ex.:Almeida" required>
-                        </div>
-                        <div class="formulario__campo-item">
-                            <label for="email"><b>Email</b></label>
-                            <input type="email" class="formulario__campo-input" name="email" placeholder="Ex.: rafael@shalom.com" required>
-                        </div>
-                        <div class="formulario__campo-item">
-                            <label for="password"><b>Senha</b></label>
-                            <input type="password" class="formulario__campo-input" name="password" placeholder="Digite sua senha" required>
-                        </div>
-                        <div class="formulario__campo-item">
-                            <label for="password2"><b>Confirmação de senha</b></label>
-                            <input type="password" class="formulario__campo-input" name="password2" placeholder="Digite sua senha mais uma vez" required>
-                        </div>
-                        <div class="formulario__campo-btn">
-                            <button class="formulario__btn" type="submit">Criar sua conta</button>
-                        </div>
-                        {% csrf_token %}
+                        <label for="nome"><b>Nome</b></label>
+                    <input type="text" class="form-control me-2 rounded-pill" name="nome" placeholder="Ex.:Rafael" required>
+                    <br>   
+                    <label for="sobrenome"><b>Sobrenome</b></label>
+                    <input type="text" class="form-control me-2 rounded-pill" name="sobrenome" placeholder="Ex.:Almeida" required>
+                    <br> 
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" class="form-control me-2 rounded-pill" name="email" placeholder="Ex.: rafael@shalom.com" required>
+                    <br>   
+                    <label for="password"><b>Senha</b></label>
+                    <input type="password" class="form-control me-2 rounded-pill" name="password" placeholder="Digite sua senha" required>
+                    <br>   
+                    <label for="password2"><b>Confirmação de senha</b></label>
+                    <input type="password" class="form-control me-2 rounded-pill" name="password2" placeholder="Digite sua senha mais uma vez" required>
+                    <br>
+                    <div class="modal-footer justify-content-center">
+                        <button class="btn btn-outline-dark border-1 rounded-pill btn-lg" type="submit">Criar sua conta</button>
                     </div>
-                </form>
-            </div>
+                    {% csrf_token %}
+                </form>  
+          </div>
         </div>
     </div>
+</div>
 
-<script>
-function mostrarModalCadastro(){
-    var modal = document.getElementById("modalControlCadastro");
-    modal.style.display = "block";
-    }
-function esconderModal(){
-    var modalLogin = document.getElementById("modalControlLogin");
-    modalLogin.style.display = "none"
-    var modalCadastro = document.getElementById("modalControlCadastro");
-    modalCadastro.style.display = "none"
-    }
-</script>
 {% endblock %}

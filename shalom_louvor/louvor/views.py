@@ -47,3 +47,6 @@ def buscar(request):
 
     return render(request, 'buscar.html', dados)
 
+def criarMusica(request):
+    return render(request, 'criarMusica.html')
+

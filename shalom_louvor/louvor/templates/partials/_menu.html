@@ -1,40 +1,49 @@
 {% load static %}
-
-<header>
-    <div class="header__menu">
-        
-        <div class= "menu__descricao">
-            <a href="{% url 'index' %}"><img class="menu__logo" src="static/img/shalom_-_logo.png" alt=""></a>
-            <div class="menu__title">
-                <!-- <h2 class="topnav__title">SHALOM OXFORD</h2> -->
-                <h2 class="menu__title-text" >MINISTERIO DE LOUVOR</h2>
-            </div>
-        </div>
-
-        <div class="menu__links">
-            {% if user.is_authenticated %}
-            <span class="menu__links-nome_usuario">Oie {{ user.first_name }} {{user.last_name}}!  <br></span>
-            <div class="menu__links-link"><a  href="{% url 'dashboard' %}">Minhas musicas</a></div>
-            <div class="menu__links-link"><a  href="{% url 'songs' %}">Songs</a></div>
-            <div class="menu__links-link"><a  href="{% url 'logout' %}">Sair</a></div>
-            {% else %}
-            <div class="menu__links-link"><a  href="#" onclick="mostrarModalCadastro()">Sign-up</a></div>
-            <div class="menu__links-link"><a  href="#" onclick="mostrarModalLogin()">Login</a></div>
-            {% endif %}
-        </div>
-    
-    </div>   
-    
-    <div class="barra_pesquisa">
-        <form action="{% url 'buscar' %}" class="search-bar" >
-            <input type="text" name="buscar" placeholder="Buscar por musicas">
-            <button class="search-btn" type="submit">
-                <span>Search</span>
-            </button>
-        </form>
-    </div>
-
-    
-</header>
 {% include 'partials/_login.html' %}
 {% include 'partials/_cadastro.html' %}
+
+
+
+<header>
+<div class="container">
+    <nav class="navbar bg-white align-text-center text-nowrap">
+        <div class="container container-menu navbar-menu text-nowrap">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="static/img/shalom_-_logo.png" alt="" width="100" height="auto" class="d-inline-block ">
+            
+          </a>
+          <h1 class="titulo_site">MINISTERIO DE LOUVOR</h1>
+        </div>
+      </nav>
+</div>
+<div class="container">
+    <nav class="navbar bg-white">
+        <div class="container text-md-center">
+           
+             <form class="d-flex  mt-1" role="search" action="{% url 'buscar' %}">
+                <input class="form-control me-2 rounded-pill input__search" type="text" name='buscar' placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-0 rounded-pill" type="submit">Search</button>
+            </form>
+
+            <div class="d-flex justify-content-center align-items-center gap-2 mb-1">
+                {% if user.is_authenticated %}
+                <span class="nome_usuario text-nowrap">Oie {{ user.first_name }} {{user.last_name}}!  <br></span>
+                <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Minhas musicas</button></a>
+                <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Sair</button></a>
+                {% else %}
+                <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastro</button>
+                {% endif %}
+            </div>
+
+        </div>
+    </nav>
+<hr>
+
+</div>
+
+
+
+
+</header>
+

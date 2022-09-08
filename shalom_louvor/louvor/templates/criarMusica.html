@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mw-500">
+    <form class="">
+
+        <div class="mb-3">
+            <label for="titulo_musica" class="form-label">Titulo da musica</label>
+            <input type="text" class="form-control" id="titulo_musica" aria-describedby="titulo da musica">
+        </div>
+        <div class="mb-3">
+            <label for="release_year" class="form-label">Ano de lancamento</label>
+            <input type="" class="form-control h-9" id="release_year" aria-describedby="Ano de lancamento">
+        </div>
+
+        <div class="mb-3">
+            <label for="lyrics" class="form-label">Letra da musica</label>
+            <textarea type="text" class="form-control" id="lyrics" aria-label="Letra da musica"></textarea>
+        </div>
+        
+        <div class="modal-footer justify-content-center" style="gap: 1em;">
+            <button class="btn btn-outline-dark border-1 rounded-pill btn-lg" type="submit">Salvar musica</button><br><br>
+            <button class="btn btn-outline-0 rounded-pill btn-sm" type="Cancelar" >Cancelar</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

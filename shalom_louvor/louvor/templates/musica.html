@@ -3,23 +3,28 @@
 {% block content %}
 
     <main>
-        
-       <div class="musica">
-            <div class="musica__heading">
-                <img class="heading__img" src= "{{ musica.nome_artista.artista_pic.url }}" alt="">
-                <h2 class="heading__title">{{musica.titulo_musica}}</h2>
-                
+        <div class="container d-flex  justify-content-space-between">
+            <div class="card border-light mb-3" style="max-width:900px; gap:20px;">
+                <div class="card-body ">
+                    <div class="card border-0">
+                        <div class="d-flex align-items-center">
+                        <img src="{{ musica.nome_artista.artista_pic.url }}" class="rounded-top " style="max-width: 130px;" alt="Foto do Artista">
+                        <h2 class="card-title mx-4 me-8">{{musica.titulo_musica}}</h2><br>
+                        </div>
+                        <div class="card-footer">by {{musica.nome_artista}} | {{musica.release_year}} </div>
+                        </div><br>
+                    <pre class="card-text">{{musica.lyrics}}</pre>
+                    
+                </div> 
             </div>
-            <p class="musica__artist">by {{musica.nome_artista}}</p>
-            <p class="musica__releaseYear">{{musica.release_year}}</p>
-            
-            <pre class="musica__lyrics">
-{{musica.lyrics}}</pre>
-            
+            <div class="card border-0" style="max-width: 450px;">
+                   
+            </div>
+        </div>
 
-
-       </div>
+ </div>
        
+      
         
     </main>
 

@@ -35,103 +35,50 @@ body {
 
 /*<!-- "Menu" - "header__menu - logo e descricao" - Links - Search --> */
 
-.header__menu {
-  display: grid;
-  grid-template-columns: 1fr 1fr; 
-  width: 80%;
-  margin: auto; 
-}
+/* .navbar input{
+  min-width: auto;
+} */
 
-.menu__descricao{
-    display: grid;
-    grid-template-columns: calc(100px + 1em) 1fr;
-    align-items: center;
+.container_menu{
+  flex-wrap: nowrap;
+
 }
-      .menu__logo{
-          padding-left: 1em;
-          width: 100px;
-          height: auto;
-      }
-      
-      .menu__title-text{
-          padding-left: 1em;
-      }
-.menu__links{
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content: flex-end;
-    padding-right: 1em;
-  }
-    .menu__links-link a {
-        color: rgb(0, 0, 0);
-        padding: 10px 12px;
-        text-decoration:none;
-        font-size: 17px;
-        border-radius: 10px;
-        
-    }
-    .menu__links-nome_usuario{
-        font-style: italic;
-        color: #787777;
-    }
-    .menu__links-link a:hover{
-        background-color: #ddd;
-        color: black;
-    }
+.input__search{
+  min-width: 500px
+}
+@media screen and (max-width: 540px) {
+.navbar  img{
+  max-width: 70px; 
+}
+.navbar .container{
+  display: block;
+}
+.input__search{
+  min-width: max-content;
+}
+}
+.nome__usuario{
+  padding-right: 1em;
+}
+.
 
 @media (max-width: 1025px) {
+
     .lista_de_musicas{
         grid-template-columns: 1fr 1fr;
-    }
+      }
 }
 @media (max-width: 490px) {
-    .header__menu{
-        display: block;
-    }
-    .menu__logo{
-        padding-left: 0;
-    }
-    .menu__links{
-        justify-content: center;
-    }
+    
     .lista_de_musicas{
         grid-template-columns: 1fr;
-    }
-    .search-bar input{
-        width:60vw;
     }
 }
 
 /* END <!-- "Menu" --!> */
 
-/* <!-- Search --> */
 
-.barra_pesquisa{
-  display: flex;
-  justify-content: center;
-  padding:1em 0;
-}
 
-.search-bar input{
-  width:75vw;
-  border-radius: 20px;
-  border-color: #787777;
-  color: black;
-  opacity: 0.5;
-  padding: 0.5em 1em;
-  margin: 0;
-  text-decoration: none;
-}
-
-.search-bar :active :focus{
-  text-decoration: none;
-}
-.search-btn{
-  border-radius: 10px;
-}
-
-/* <!-- END Search --> */
 
 /* <!-- Dashboard --> */
 
