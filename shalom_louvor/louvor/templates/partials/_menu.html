@@ -5,18 +5,19 @@
 
 
 <header>
-<div class="container">
-    <nav class="navbar bg-white align-text-center text-nowrap">
-        <div class="container container-menu navbar-menu text-nowrap">
-          <a class="navbar-brand" href="{% url 'index' %}">
-            <img src="static/img/shalom_-_logo.png" alt="" width="100" height="auto" class="d-inline-block ">
-            
-          </a>
-          <h1 class="titulo_site">MINISTERIO DE LOUVOR</h1>
-        </div>
-      </nav>
-</div>
-<div class="container">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-4 col-sm-2">
+        <a class="" href="{% url 'index' %}">
+        <img src="static/img/shalom_-_logo.png" alt="" width="100" height="auto" class=""></a>
+      </div>
+      <div class="col col-sm-10">
+        <h1 class="d-flex justify-content-end text-sm-start" >MINISTERIO DE LOUVOR</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
     <nav class="navbar bg-white">
         <div class="container text-md-center">
            
@@ -27,8 +28,9 @@
 
             <div class="d-flex justify-content-center align-items-center gap-2 mb-1">
                 {% if user.is_authenticated %}
-                <span class="nome_usuario text-nowrap">Oie {{ user.first_name }} {{user.last_name}}!  <br></span>
+                <span class="nome_usuario text-nowrap">Ola {{ user.first_name }} {{user.last_name}}!  <br></span>
                 <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Minhas musicas</button></a>
+                <a href="{% url 'criarMusica' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Add Musica</button></a>
                 <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Sair</button></a>
                 {% else %}
                 <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
@@ -38,9 +40,8 @@
 
         </div>
     </nav>
-<hr>
-
-</div>
+  </div>
+  <hr>
 
 
 

@@ -3,26 +3,39 @@
 {% block content %}
 
 
-<div class="container mw-500">
-    <form class="">
+<div class="container max-width-500">
+    <form class="" action="" method="POST">
 
         <div class="mb-3">
             <label for="titulo_musica" class="form-label">Titulo da musica</label>
-            <input type="text" class="form-control" id="titulo_musica" aria-describedby="titulo da musica">
+            <input type="text" class="form-control " name = 'titulo_musica' id="titulo_musica" aria-describedby="titulo da musica" style="max-width: 500px ;">
+        </div>
+        <div class="mb-3">
+            <label for="artista" class="form-label">Artista</label>
+            <input class="form-control" list="datalistOptions" name="nome_artista" id="artista" placeholder="Type to search..." style="max-width: 500px ;">
+                <datalist id="datalistOptions">
+                    {% if artistas %}
+                    {% for artista in artistas %}
+                    <option value="{{ artista.nome_artista}}">
+                    {% endfor %}
+                    {% endif %}
+                    
+                </datalist>
         </div>
         <div class="mb-3">
             <label for="release_year" class="form-label">Ano de lancamento</label>
-            <input type="" class="form-control h-9" id="release_year" aria-describedby="Ano de lancamento">
+            <input type="" class="form-control h-9 " name='release_year' id="release_year" aria-describedby="Ano de lancamento" style="max-width:4em">
         </div>
-
         <div class="mb-3">
             <label for="lyrics" class="form-label">Letra da musica</label>
-            <textarea type="text" class="form-control" id="lyrics" aria-label="Letra da musica"></textarea>
+            <textarea type="text-area" class="form-control" name="lyrics" id="lyrics" aria-label="Letra da musica" style="height: 500px; max-width:500px"></textarea>
         </div>
         
-        <div class="modal-footer justify-content-center" style="gap: 1em;">
-            <button class="btn btn-outline-dark border-1 rounded-pill btn-lg" type="submit">Salvar musica</button><br><br>
-            <button class="btn btn-outline-0 rounded-pill btn-sm" type="Cancelar" >Cancelar</button>
+        <div class="modal-footer justify-content-center" style="gap: 1em; max-width: 500px;">
+            <button class="btn btn-outline-dark border-1 rounded-pill btn-lg" type="post">Salvar musica</button><br><br>
+            <button class="btn btn-outline-0 rounded-pill btn-sm" type="cancel" >Cancelar</button>
+        </div>
+        {% csrf_token %}
     </form>
 </div>
 

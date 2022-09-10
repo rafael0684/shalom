@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from django.contrib.auth import authenticate
@@ -79,4 +79,31 @@ def dashboard(request):
     dados = {
         'musicas' : musicas
     }
+    
     return render(request, 'dashboard.html', dados)
+
+def criarMusica(request):
+    artistas = Artista.objects.order_by('nome_artista')
+    dados = {
+        'artistas': artistas,    
+    }
+    
+
+    if request.method == 'POST':
+        titulo_musica = request.POST['titulo_musica'].strip()
+        input_artista = request.POST['nome_artista']
+        nome_artista = get_object_or_404(Artista, nome_artista=input_artista)
+        release_year = request.POST['release_year']
+        lyrics = request.POST['lyrics']
+    
+        nova_musica = Musica.objects.create(titulo_musica=titulo_musica, 
+                                            nome_artista=nome_artista,
+                                            release_year=release_year,
+                                            lyrics=lyrics
+                                            )
+        nova_musica.save()
+        messages.success(request, "Musica adicionada com sucesso")
+        
+        render(request, "criarMusica.html")
+    
+    return render(request, 'criarMusica.html', dados)

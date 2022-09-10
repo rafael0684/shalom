@@ -1,9 +1,9 @@
 from gc import get_objects
-from django.shortcuts import render, get_object_or_404
-
-# Create your views here.
+import re
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from django.http import HttpResponse
-
+from datetime import datetime
 from .models import Musica, Artista
 
 
@@ -47,6 +47,5 @@ def buscar(request):
 
     return render(request, 'buscar.html', dados)
 
-def criarMusica(request):
-    return render(request, 'criarMusica.html')
+
 

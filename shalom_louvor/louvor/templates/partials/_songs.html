@@ -9,7 +9,7 @@
             
     <li class="listaMusicas__musica">
         <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img" ></a>
-        <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p>{{ musica.titulo_musica }} por {{musica.nome_artista}}</p></a>
+        <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p>{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>
                 
     </li>
             

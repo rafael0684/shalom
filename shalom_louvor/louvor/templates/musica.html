@@ -11,9 +11,9 @@
                         <img src="{{ musica.nome_artista.artista_pic.url }}" class="rounded-top " style="max-width: 130px;" alt="Foto do Artista">
                         <h2 class="card-title mx-4 me-8">{{musica.titulo_musica}}</h2><br>
                         </div>
-                        <div class="card-footer">by {{musica.nome_artista}} | {{musica.release_year}} </div>
+                        <div class="card-footer"><span class="fst-italic"> by</span> {{musica.nome_artista}} | {{musica.release_year}} </div>
                         </div><br>
-                    <pre class="card-text">{{musica.lyrics}}</pre>
+                    <pre class="card-text font-monospace">{{musica.lyrics}}</pre>
                     
                 </div> 
             </div>
