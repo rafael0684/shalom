@@ -1,53 +1,17 @@
 {% load static %}
-    <div class="dashboard">
+
+<div class="dashboard">
     <ul class="dashboard__principal">
         {% if musicas %}
         {% for musica in musicas %}
-         <li class="dashboard__principal-item">
-             <a href="{% url 'musica' musica.id %}"><img class="item__img" src="{{musica.nome_artista.artista_pic.url}}" alt=""></a>
-         </li>
+        <li class="dashboard__principal-item">
+            <a href="{% url 'musica' musica.id %}"><img class="item__img" src="{{musica.nome_artista.artista_pic.url}}" alt=""></a>
+        </li>
+            
         
-    
         {% endfor %}
         {% else %}
         {% endif %}  
 
-        </ul>
-         <!-- <li class="principal__item">
-            <img class="item__img" src="/static/img/bethel.jpg" alt="">
-        </li> -->
-         <!-- <li class="principal__item">
-             <img class="item__img" src="/static/img/leeland.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/hillsong.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/hillsongUnited.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/chrisTomlin.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/philWickham.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/mattRedman.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/martynLayzell.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/jesusCulture.png" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/martinSmith.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/morada.jpeg" alt="">
-         </li>
-         <li class="principal__item">
-             <img class="item__img" src="/static/img/timHughes.jpeg" alt="">
-         </li> -->
-     
-    </div>
+    </ul>
+</div>        

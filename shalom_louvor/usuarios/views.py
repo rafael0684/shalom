@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
-from django.contrib.auth import authenticate
-from louvor.models import Musica, Artista
+
 
 
 def login(request):
+    '''Realiza o login de usuarios'''
     if request.method == 'POST':
         email =request.POST['email']
         senha = request.POST['senha']
@@ -33,9 +33,8 @@ def login(request):
                 print('Nao existe usuario cadastrado com esse email')
         return render(request,'index.html')
     
-    
-
 def cadastro(request):
+    """Realiza cadastro de novo usuario"""
     if request.method == 'POST':
         
         nome = request.POST['nome'].capitalize()
@@ -70,40 +69,8 @@ def cadastro(request):
         return render(request, 'cadastro.html')
 
 def logout(request):
+    '''Realiza o logout do usuario'''
     auth.logout(request)
     messages.success(request, 'Logout realizado com sucesso')
     return redirect('index')
 
-def dashboard(request):
-    musicas = Musica.objects.order_by('-data_musica').all
-    dados = {
-        'musicas' : musicas
-    }
-    
-    return render(request, 'dashboard.html', dados)
-
-def criarMusica(request):
-    artistas = Artista.objects.order_by('nome_artista')
-    dados = {
-        'artistas': artistas,    
-    }
-    
-
-    if request.method == 'POST':
-        titulo_musica = request.POST['titulo_musica'].strip()
-        input_artista = request.POST['nome_artista']
-        nome_artista = get_object_or_404(Artista, nome_artista=input_artista)
-        release_year = request.POST['release_year']
-        lyrics = request.POST['lyrics']
-    
-        nova_musica = Musica.objects.create(titulo_musica=titulo_musica, 
-                                            nome_artista=nome_artista,
-                                            release_year=release_year,
-                                            lyrics=lyrics
-                                            )
-        nova_musica.save()
-        messages.success(request, "Musica adicionada com sucesso")
-        
-        render(request, "criarMusica.html")
-    
-    return render(request, 'criarMusica.html', dados)

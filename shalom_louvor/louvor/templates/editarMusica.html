@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container max-width-500">
+    <form action="{% url 'atualizarMusica' %}" method="post">
+        <input type="text" id="musica_id" class="form-control" name="musica_id" value="{{ musica.id }}" hidden >
+        <div class="mb-3">
+            <label for="titulo_musica" class="form-label">Titulo da musica</label>
+            <input type="text" class="form-control " name = 'titulo_musica' id="titulo_musica" aria-describedby="titulo da musica" value="{{ musica.titulo_musica }}" style="max-width: 500px ;">
+        </div>
+        <div class="mb-3">
+            <label for="artista" class="form-label">Artista</label>
+            <input class="form-control" list="datalistOptions" name="nome_artista" id="artista" placeholder="Type to search..." value="{{ musica.nome_artista }}" style="max-width: 500px ;">
+                <datalist id="datalistOptions">
+                    {% if artistas %}
+                    {% for artista in artistas %}
+                    <option value="{{ musica.nome_artista}}">
+                    {% endfor %}
+                    {% endif %}
+                    
+                </datalist>
+        </div>
+        <div class="mb-3">
+            <label for="release_year" class="form-label">Ano de lancamento</label>
+            <input type="" class="form-control h-9 " name='release_year' id="release_year" value="{{ musica.release_year }}" aria-describedby="Ano de lancamento" style="max-width:4em">
+        </div>
+        <div class="mb-3">
+            <label for="lyrics" class="form-label">Letra da musica</label>
+            <textarea type="text-area" class="form-control" name="lyrics" id="lyrics" value="{{ musica.lyrics }}" aria-label="Letra da musica" style="height: 500px; max-width:500px">{{ musica.lyrics }}</textarea>
+        </div>
+        
+        <div class="modal-footer justify-content-center" style="gap: 1em; max-width: 500px;">
+            <button class="btn btn-outline-dark border-1 rounded-pill btn-lg" type="post">Atualizar musica</button><br><br>
+        </div>
+        {% csrf_token %}
+
+    </form>
+</div>
+
+
+{% endblock %}

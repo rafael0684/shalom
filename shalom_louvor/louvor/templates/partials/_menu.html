@@ -25,18 +25,20 @@
                 <input class="form-control me-2 rounded-pill input__search" type="text" name='buscar' placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-0 rounded-pill" type="submit">Search</button>
             </form>
-
-            <div class="d-flex justify-content-center align-items-center gap-2 mb-1">
+              
+              
+              <div class="d-flex justify-content-center align-items-center gap-2 mb-1">
                 {% if user.is_authenticated %}
-                <span class="nome_usuario text-nowrap">Ola {{ user.first_name }} {{user.last_name}}!  <br></span>
-                <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Minhas musicas</button></a>
-                <a href="{% url 'criarMusica' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Add Musica</button></a>
-                <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Sair</button></a>
-                {% else %}
-                <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastro</button>
-                {% endif %}
-            </div>
+                  <span class="nome_usuario text-nowrap">Ola {{ user.first_name }} {{user.last_name}}!  <br></span>
+                  <a href="{% url 'todasMusicas' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Musicas</button></a>
+                  <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Minhas musicas</button></a>
+                  <a href="{% url 'criarMusica' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Add Musica</button></a></div>
+                  <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Sair</button></a>
+                  {% else %}
+                  <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                  <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastro</button>
+                  {% endif %}
+              </div>
 
         </div>
     </nav>
