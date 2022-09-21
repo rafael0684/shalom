@@ -1,48 +1,76 @@
 {% load static %}
 {% include 'partials/_login.html' %}
 {% include 'partials/_cadastro.html' %}
+{% include 'partials/_previewSlide.html' %}
 
 
 
 <header>
-  <div class="container">
+  <div class="container flex-nowrap justify-content-space-between">
     <div class="row align-items-center justify-content-center">
       <div class="col-4 col-sm-2">
         <a class="" href="{% url 'index' %}">
         <img src="static/img/shalom_-_logo.png" alt="" width="100" height="auto" class=""></a>
       </div>
       <div class="col col-sm-10">
-        <h1 class="d-flex justify-content-end text-sm-start" >MINISTERIO DE LOUVOR</h1>
+        <h1 class="d-flex justify-content-end text-sm-start titulo-site" >MINISTERIO DE LOUVOR</h1>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <nav class="navbar bg-white">
-        <div class="container text-md-center">
-           
-             <form class="d-flex  mt-1" role="search" action="{% url 'buscar' %}">
-                <input class="form-control me-2 rounded-pill input__search" type="text" name='buscar' placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-0 rounded-pill" type="submit">Search</button>
-            </form>
-              
-              
-              <div class="d-flex justify-content-center align-items-center gap-2 mb-1">
+    <nav class="navbar flex-nowrap ">
+      <form class="d-flex flex-nowrap" role="search" action="{% url 'buscar' %}">
+          <input class="form-control me-2 rounded-pill input__search" type="search" name='buscar' placeholder="Search.." aria-label="Search">
+          <button class="btn btn-outline-0 rounded-pill" type="submit">Search</button>
+      </form>
+      <nav class="navbar bg-white">
+        <nav class="navbar navbar-expand-lg text-sm-end flex-nowrap ">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
+            <span class="navbar-toggler-icon "></span>
+          </button>
+          <div class="offcanvas offcanvas-end menu-offcanvas" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+            <div class="container">
+              <div class="offcanvas-header">
                 {% if user.is_authenticated %}
-                  <span class="nome_usuario text-nowrap">Ola {{ user.first_name }} {{user.last_name}}!  <br></span>
-                  <a href="{% url 'todasMusicas' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Musicas</button></a>
-                  <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Minhas musicas</button></a>
-                  <a href="{% url 'criarMusica' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Add Musica</button></a></div>
-                  <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill">Sair</button></a>
-                  {% else %}
-                  <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                  <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastro</button>
-                  {% endif %}
+                <h5 class="offcanvas-title nome_usuario text-nowrap" id="offcanvasDarkNavbarLabel">Ola {{ user.first_name }} {{user.last_name}}!</h5>
+                {% else %}
+                <h5 class="offcanvas-title nome_usuario text-nowrap" id="offcanvasDarkNavbarLabel"></h5>
+                {% endif %}
+                <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-
-        </div>
+              <div class="offcanvas-body ">
+                <ul class="navbar-nav align-item-center justify-content-end flex-grow-1 pe-3">
+                  {% if user.is_authenticated %}
+                    <li class="nav-item">
+                      <a href="{% url 'todasMusicas' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill text-nowrap">Musicas</button></a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill text-nowrap">Minhas musicas</button></a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'criarMusica' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill text-nowrap">Add Musica</button></a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark border-0 rounded-pill text-nowrap">Sair</button></a>
+                    </li>     
+                  {% else %}
+                    <li class="nav-item">
+                      <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="btn btn-outline-dark border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastro</button>
+                    </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </nav>
     </nav>
-  </div>
+  </div>   
+
   <hr>
 
 

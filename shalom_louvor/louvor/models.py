@@ -10,8 +10,10 @@ class Musica(models.Model):
     nome_artista = models.ForeignKey(Artista, on_delete=models.CASCADE)
     release_year = models.IntegerField()
     lyrics = models.TextField()
+    chords = models.TextField(blank=True)
     data_musica = models.DateField(default=datetime.now, blank=True)
-    
+
+
     
 
 

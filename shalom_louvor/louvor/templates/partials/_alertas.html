@@ -1,12 +1,10 @@
 {% if messages %}
-    {% for message in messages %}
-    <div class="container d-flex alert alert-{{message.tags}}" role="alert" style="justify-content: space-between ;">
+    {% for message in messages %}  
+        <div class="container d-flex alert alert-{{message.tags}}" role="alert" style="justify-content: space-between ;">
         
-          {{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      
-        
-        
-      </div>
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            
+        </div>
     {% endfor %}
 {% endif %}

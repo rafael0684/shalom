@@ -1,25 +1,26 @@
 {% load static %}
 
 
-<div class="listaMusicas"><p>Songs: </p></div>
-<div class="listaMusicas_wraper">
-<ul class="lista_de_musicas">
-    {% if musicas %}
-    {% for musica in musicas %}
-            
-    <li class="listaMusicas__musica">
-        <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img" ></a>
-        <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p>{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>
+<div class="listaMusicas container"><p>Songs: </p></div>
+<div class="container">
+    <ul class="lista_de_musicas ">
+        {% if musicas %}
+        {% for musica in musicas %}
                 
-    </li>
+        <li class="listaMusicas__musica">
+            <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img" ></a>
             
-    {% endfor %}
-    {% else %}
-    <li class="listaMusicas__musica">
-        <img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img">
-        <a href="{% url 'index' %}" class="musica__titulo"><p>Nenhum resultado encontrado. Tente novamente</p></a>
+            <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p>{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>
+                    
+        </li>
                 
-    </li>
-    {% endif %}            
-</ul>
+        {% endfor %}
+        {% else %}
+        <li class="listaMusicas__musica">
+            <img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img">
+            <a href="{% url 'index' %}" class="musica__titulo"><p>Nenhum resultado encontrado. Tente novamente</p></a>
+                    
+        </li>
+        {% endif %}            
+    </ul>
 </div>

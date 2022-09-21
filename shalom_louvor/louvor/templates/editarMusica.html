@@ -11,7 +11,7 @@
         </div>
         <div class="mb-3">
             <label for="artista" class="form-label">Artista</label>
-            <input class="form-control" list="datalistOptions" name="nome_artista" id="artista" placeholder="Type to search..." value="{{ musica.nome_artista }}" style="max-width: 500px ;">
+            <input class="form-control" list="datalistOptions" name="input_artista" id="artista" placeholder="Type to search..." value="{{ musica.nome_artista }}" style="max-width: 500px ;">
                 <datalist id="datalistOptions">
                     {% if artistas %}
                     {% for artista in artistas %}
@@ -28,6 +28,10 @@
         <div class="mb-3">
             <label for="lyrics" class="form-label">Letra da musica</label>
             <textarea type="text-area" class="form-control" name="lyrics" id="lyrics" value="{{ musica.lyrics }}" aria-label="Letra da musica" style="height: 500px; max-width:500px">{{ musica.lyrics }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="chords" class="form-label">Cifra da musica</label>
+            <textarea type="text-area" class="form-control" name="chords" id="chords" value="{{ musica.chords }}" aria-label="Cifra da musica" style="height: 500px; max-width:500px">{{ musica.chords }}</textarea>
         </div>
         
         <div class="modal-footer justify-content-center" style="gap: 1em; max-width: 500px;">

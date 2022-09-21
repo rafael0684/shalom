@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 def index(request):
     '''Rederiza a pagina Index do site'''
     musicas = Musica.objects.order_by('-data_musica').all
+
     dados = {
         'musicas' : musicas
     }
@@ -41,12 +42,15 @@ def todasMusicas(request):
 def musica(request, musica_id):
     '''Visualizacao detalhes da musica requerida'''
     musica = get_object_or_404(Musica, pk=musica_id)
-
+    musica_estrofes = musica.lyrics.split("£")
+    
     musica_a_exibir = {
-        'musica': musica
+        'musica': musica,
+        'musica_estrofes': musica_estrofes
     }
     
-    return render(request, 'musica.html', musica_a_exibir )
+    return render(request, 'musica.html', musica_a_exibir)
+
 
 def dashboard(request):
     ''' Lista de musicas criadas por Usuario Logado'''
@@ -70,14 +74,16 @@ def criarMusica(request):
     if request.method == 'POST':
         titulo_musica = request.POST['titulo_musica'].strip()
         input_artista = request.POST['nome_artista']
-        nome_artista = get_object_or_404(Artista, nome_artista=input_artista)
+        nome_artista = buscar_ou_criar_artista(input_artista)
         release_year = request.POST['release_year']
         lyrics = request.POST['lyrics']
+        chords =request.POST['chords']
         user = get_object_or_404(User, pk=request.user.id)
         nova_musica = Musica.objects.create(titulo_musica=titulo_musica, 
                                             nome_artista=nome_artista,
                                             release_year=release_year,
                                             lyrics=lyrics,
+                                            chords=chords,
                                             user=user)
         nova_musica.save()
         messages.success(request, "Musica adicionada com sucesso")
@@ -85,6 +91,16 @@ def criarMusica(request):
         return redirect('dashboard')
     
     return render(request, 'criarMusica.html', dados)
+
+def buscar_ou_criar_artista(input_artista):
+    '''Metodo busca por artista no DB / devolve Artista ou cria novo artista'''
+    if Artista.objects.filter(nome_artista = input_artista).exists():
+        artista = get_object_or_404(Artista, nome_artista=input_artista)
+        return artista
+    else:
+        artista = Artista.objects.create(nome_artista=input_artista.strip())
+        artista.save()
+        return artista
 
 def editarMusica(request, musica_id):
     '''Formulario para editar musica'''
@@ -99,10 +115,11 @@ def atualizarMusica(request):
         musica_id = request.POST['musica_id']
         m = Musica.objects.get(pk=musica_id)
         m.titulo_musica = request.POST['titulo_musica'].strip()
-        input_artista = request.POST['nome_artista']
-        m.nome_artista = get_object_or_404(Artista, nome_artista=input_artista)
+        input_artista = request.POST['input_artista']
+        m.nome_artista = buscar_ou_criar_artista(input_artista)
         m.release_year = request.POST['release_year']
         m.lyrics = request.POST['lyrics']
+        m.chords = request.POST['chords']
         m.save()
 
         messages.success(request, 'Musica atualizada com sucesso')

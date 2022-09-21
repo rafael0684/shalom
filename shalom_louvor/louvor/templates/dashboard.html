@@ -4,26 +4,35 @@
     <main>
         
 
-        <div class="listaMusicas container">
+        <div class=" container">
             
             <p>Minhas musicas: </p>
             
 
-            <div class="container justify-content-center">
-                <ul class=" musica__titulo">
+            <div class="container">
+                <ul class="lista_de_musicas">
                     {% if musicas %}
                     {% for musica in musicas %}
-                    <div class="listaMusicas__musica">
-                        <div class="d-flex align-items-center border-1">
+                    <li class="listaMusicas__musica justify-content-between" style="max-width: 100%;">
+                        
                             <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="rounded-top musica__img" ></a>
-                            <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p >{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>        
-                        </div>   
-                    </div> 
-                        <div class="">
+                            <a href="{% url 'musica' musica.id %}" class="musica__titulo me-3"><p >{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>  
+                            <div class="d-flex" style="margin-left: auto;">
+                                <div class="vr "></div>
+                            
+                                <div class="d-flex flex-column justify-content-center col-2">
+                                    <a href="{% url 'editarMusica' musica.id %}"><img class="ms-3" src="static/img/icones/contract.png" style="width: 24px; height: 24px;" alt="" ></a>
+                                    <a href="{% url 'deletarMusica' musica.id %}"><img class="ms-3" src="static/img/icones/delete.png" style="width: 24px; height: 24px;" alt=""></a> 
+                                </div>
+                            </div>
+                        
+                    </li>   
+                        
+                        <!-- <div class="">
                             <a href="{% url 'editarMusica' musica.id %}"><button type="button" class="btn btn-outline-dark border-1 rounded-pill btn-sm ">Editar Musica</button></a>
                             <a href="{% url 'deletarMusica' musica.id %}"><button type="button" class="btn btn-outline-dark border-1 rounded-pill btn-sm">Deletar Musica</button></a>
-                        </div>
-                    <hr>    
+                        </div> -->
+                      
                             
                     {% endfor %}
                     {% else %}
