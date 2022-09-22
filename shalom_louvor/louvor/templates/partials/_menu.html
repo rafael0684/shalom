@@ -1,22 +1,23 @@
 {% load static %}
 {% include 'partials/_login.html' %}
 {% include 'partials/_cadastro.html' %}
-{% include 'partials/_previewSlide.html' %}
+
 
 
 
 <header>
-  <div class="container flex-nowrap justify-content-space-between">
-    <div class="row align-items-center justify-content-center">
-      <div class="col-4 col-sm-2">
-        <a class="" href="{% url 'index' %}">
-        <img src="static/img/shalom_-_logo.png" alt="" width="100" height="auto" class=""></a>
-      </div>
-      <div class="col col-sm-10">
-        <h1 class="d-flex justify-content-end text-sm-start titulo-site" >MINISTERIO DE LOUVOR</h1>
-      </div>
+  <div class="container display-grid">
+    <div class="logo">
+      <a class="" href="{% url 'index' %}">
+      <img src="static/img/shalom_-_logo.png" alt="" width="100" height="auto" class=""></a>   
     </div>
+
+    <div class="titulo">
+      <h1 class=" titulo-site" >MINISTERIO DE LOUVOR</h1>
+    </div>
+    
   </div>
+
 
   <div class="container">
     <nav class="navbar flex-nowrap ">

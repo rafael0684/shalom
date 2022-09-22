@@ -1,43 +1,41 @@
-@font-face {
-    font-family: 'icones';
-    src: url(../font/icones.ttf);
+/* menu nome e logo */
+.display-grid{
+  display: grid;
+  grid-template-areas: "logo titulo";
+  grid-template-columns: auto 1fr;
+  justify-items: end;
+  align-items: center;
+  gap: 1em;
 }
-blockquote,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	text-decoration: none;
-  
-} 
+.logo{
+  grid-area: logo;
+}
+.titulo{
+  grid-area: titulo;
+}
+.titulo-site{
+  font-size: clamp(25px, 5vw, 70px);
+  text-align: right;
+}
+/* menu nome e logo FIM */
+
+/* barra de busca */
+.input__search{
+  width: clamp(150px,53vw,700px);
+}
+/* barra de busca FIM */
 
 body {
     
     margin-top: 10px;
+    margin-bottom: 1em;
     background-color: white;
-    font-family: 'Open Sans', 'icones', sans-serif;
+    font-family: 'Open Sans', 'icones', arial;
     color: black;
     
 }
 
-/*<!-- "Menu" - "header__menu - logo e descricao" - Links - Search --> */
-
-/* .navbar input{
-  min-width: auto;
-} */
+/* slide test */
 
 .slide {
   position: relative;
@@ -62,57 +60,12 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
   font-size: 5vw;
   text-align: center;
 }
-
-.titulo-site{
-  font-size: clamp(25px, 5vw, 70px);
-
-}
-.container_menu{
-  flex-wrap: nowrap;
-
-}
-.input__search{
-  width: clamp(150px,53vw,700px);
-}
-
-.menu-offcanvas{
-  width:fit-content;
-}
-.lyrics-texto{
-  font-size: clamp(13px, 14vw, 1vw);
-}
-
-@media screen and (max-width: 540px) {
-.navbar  img{
-  max-width: 70px; 
-}
-.navbar .container{
-  display: block;
-}
-
-}
-.nome__usuario{
-  padding-right: 1em;
-}
+/* slide test FIM*/
 
 
 
-@media (max-width: 1025px) {
- 
-  .lista_de_musicas{
-        grid-template-columns: 1fr 1fr;
-      }
 
-} 
 
-    
-
-@media (max-width: 490px) {
-    
-    .lista_de_musicas{
-        grid-template-columns: 1fr;
-    }
-}
 
 /* END <!-- "Menu" --!> */
 
@@ -123,23 +76,41 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
 
 .dashboard{
   display: flex;
-  justify-content: center;
+  overflow-y:hidden;
   box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
   border-radius: 20px;
+  justify-content: center; 
+  align-items: center;
+  
 }
-.dashboard__principal{
+.dashboard--principal{
   
   margin: 1em 0;
   list-style-type: none;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  justify-content:center;
-  max-width: 950px;
+
   
 }
 
-.dashboard__principal-item img:hover{
+@media (max-width: 1024px) {
+  .dashboard--principal{
+    
+    max-height: 500px;
+    gap: 0;
+    flex-direction: column;
+  }
+  .dashboard{
+    border-radius: 0;
+    justify-content: flex-start;
+  }
+  
+} 
+
+
+.dashboard--principal_item img:hover{
   opacity: 0.5;
 }
 .item__img{
@@ -156,67 +127,53 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
 /* <!-- Songs --> */
 
 .listaMusicas{
-    font-size: large;
-    padding-left: 1em;
-}
-
-
-.listaMusicas_wraper{
-  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.094);
-  border-radius: 20px;
-  padding: 0 1em;
+  font-size: large;
+  padding-left: 1em;
+  margin-top: 2em;
 }
 
 .lista_de_musicas{
-    
-    display: grid;
-    gap: 1em 5em;
-    grid-template-columns: 1fr 1fr 1fr;
-   
-    
+  display: grid;
+  gap: 1em 5em;
+  grid-template-columns: 1fr 1fr 1fr;    
 }
-.lista_de_musicas-dashboard{
 
-    display: grid;
-    gap: 1em 5em;
-    grid-template-columns: 1fr 1fr;
+.listaMusicas__musica{
+  display: flex;
+  align-items: baseline;
 
 }
+
+.listaMusicas__musica a{
+  color: black;
+}
+
+.listaMusicas__musica a:hover{
+  color:rgb(194, 194, 194)
+}
+
+.musica__img{
+  width: 60px;
+}
+
+.musica__titulo {   
+    padding-left: 1em;
+    margin: 0;
+    text-decoration: none;
+}
+
 
 @media (max-width: 1025px) {
     .lista_de_musicas{
       grid-template-columns: 1fr 1fr;
     }
-
 }
 
 @media (max-width: 490px) {
   .lista_de_musicas{
     grid-template-columns: 1fr;
   }
-  
-}
-.musica__titulo {
-    
-    padding-left: 1em;
-    margin: 0;
-}
-.listaMusicas__musica{
-    display: flex;
-    align-items: center;
-    
-    
-}
-.listaMusicas__musica a:hover{
-    color:rgb(194, 194, 194)
-}
-.listaMusicas__musica a{
-  color: black;
-}
-.musica__img{
-    width: 60px;
-
-}
+} 
 
 
 /* <!-- END Songs --> */
@@ -225,51 +182,17 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
 
 
 /* <!-- Musica --> */
-
-.musica{
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: auto;
-  justify-content: center;
-  padding: 1em;
-  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
-  border-radius: 20px;
-  
+.lyrics-texto{
+  font-size: clamp(13px, 14vw, 1vw);
 }
 
-.musica__heading{
-  display: flex;
-  flex-direction: column;
-  align-items:baseline;
-  flex-wrap: wrap;
-  max-width: 100vw;
-
+.musica--img{
+  max-width: 130px;
 }
 
-.heading__img{
-  border-radius: 20px;
-  width:330px;
-  height: 200px;
-  object-fit: cover;
-  
-}
-.musica__artist{
-  padding: 0;
-  margin: 0;
-  color: darkgray;
-  max-width: 100vw;
-  
-}
-.musica__releaseYear{
-  color: darkgrey;
-  font-style: italic;
-  font-size: smaller;
- }
-.musica__lyrics{
-  margin: 1em 0;
-  max-width: 100vw;
-  font-family: 'icones';
+.musica--card{
+  max-width:900px; 
+  gap:20px;
 }
 
 /* <!-- END Musica --> */
