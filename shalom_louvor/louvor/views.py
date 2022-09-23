@@ -1,3 +1,5 @@
+from gc import get_objects
+from mailbox import NotEmptyError
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Musica, Artista
@@ -8,9 +10,11 @@ from django.contrib.auth.models import User
 def index(request):
     '''Rederiza a pagina Index do site'''
     musicas = Musica.objects.order_by('-data_musica').all
+    artistas= Artista.objects.order_by('-nome_artista').all
 
     dados = {
-        'musicas' : musicas
+        'musicas' : musicas,
+        'artistas': artistas
     }
     return render(request, 'index.html', dados)
 
@@ -38,6 +42,19 @@ def todasMusicas(request):
         'musicas' : musicas
     }
     return render(request, 'todasMusicas.html', dados)
+
+def todasMusicasArtista(request, artista_id):
+    '''Mostra todas as musicas de um artista por ordem alfabetica'''
+    artista = get_object_or_404(Artista, pk =artista_id)
+    musicas = Musica.objects.order_by('-data_musica')
+    musicas_artista = musicas.filter(nome_artista = artista)
+
+    dados = {
+        'musicas' : musicas_artista,
+    }
+
+    return render(request, 'todasMusicas.html', dados)
+    
 
 def musica(request, musica_id):
     '''Visualizacao detalhes da musica requerida'''

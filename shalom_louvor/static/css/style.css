@@ -91,13 +91,14 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+  padding: 0;
 
   
 }
 
 @media (max-width: 1024px) {
   .dashboard--principal{
-    
+    text-decoration: none;
     max-height: 500px;
     gap: 0;
     flex-direction: column;
@@ -133,6 +134,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
 }
 
 .lista_de_musicas{
+  padding: 0;
   display: grid;
   gap: 1em 5em;
   grid-template-columns: 1fr 1fr 1fr;    
@@ -140,7 +142,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
 
 .listaMusicas__musica{
   display: flex;
-  align-items: baseline;
+  align-items: center;
 
 }
 
@@ -166,6 +168,9 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,13,51,1) 89%, r
 @media (max-width: 1025px) {
     .lista_de_musicas{
       grid-template-columns: 1fr 1fr;
+    }
+    .container{
+      max-width: 95%;
     }
 }
 
