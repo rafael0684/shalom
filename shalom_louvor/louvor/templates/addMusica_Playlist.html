@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container max-width-500">
+    <div class="mb-3">    
+        <div class="listaMusicas d-flex gap-4 align-items-center container p-0">
+            <img src="{% static 'img/icones/playlist.png' %}" alt="" class="rounded-top musica__img" >
+            <p class="pt-3">Playlist : <strong>{{ playlist }} - </strong> {{ playlist.playlist_data}}</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <ul class="d-flex flex-column gap-2  p-0">
+            
+            {% for musica in playlist.playlist_musicas.all %}
+                    
+            <li class="listaMusicas__musica " style="max-width: 500px;">
+                <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="musica__img" ></a>
+                
+                <a href="{% url 'musica' musica.id %}" class="musica__titulo"><p>{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>
+                 
+                <div class="d-flex" style="margin-left: auto;">
+                    <div class="vr "></div>                            
+                    <div class="d-flex flex-column justify-content-center col-2">
+                        <a href="{% url 'deletar_M_Playlist' playlist.id musica.id %}"><img class="ms-3" src="static/img/icones/delete.png" style="width: 24px; height: 24px;" alt=""></a> 
+                    </div>
+                </div>   
+            </li>
+                    
+            {% endfor %}
+
+        </ul>           
+    </div>
+
+    
+    
+    <form action="{% url 'atualizarPlaylist' %}" class="" method="POST" role="form">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="musica" class="form-label">Add Musica:</label>
+            <div>
+                <input type="text" id="playlist_id" class="form-control" name="playlist_id" value="{{ playlist.id }}" hidden >
+                
+                <div class="d-flex">
+                    <input class="form-control" list="datalistOptions" name="titulo_musica" id="musica" placeholder="Type to search..." style="max-width: 500px ;">
+                    <datalist id="datalistOptions" name="titulo_musica">
+                        {% if musicas %}
+                        {% for musica in musicas %}
+                        <option value="{{ musica.titulo_musica}}">
+                        {% endfor %}
+                        {% endif %}
+                    </datalist>
+
+                    <button type="submit" class="btn btn-default ms-3" id="add-btn">ADD</button>
+                </div> 
+            </div>
+        </div>
+        
+
+
+    </form>
+    </div>
+
+
+{% endblock %}

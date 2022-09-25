@@ -3,6 +3,7 @@ from mailbox import NotEmptyError
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Musica, Artista
+from playlist.models import Playlist
 from django.contrib.auth.models import User
 
 
@@ -46,11 +47,11 @@ def todasMusicas(request):
 def todasMusicasArtista(request, artista_id):
     '''Mostra todas as musicas de um artista por ordem alfabetica'''
     artista = get_object_or_404(Artista, pk =artista_id)
-    musicas = Musica.objects.order_by('-data_musica')
-    musicas_artista = musicas.filter(nome_artista = artista)
+    lista_de_musicas = Musica.objects.order_by('-data_musica')
+    musicas = lista_de_musicas.filter(nome_artista = artista)
 
     dados = {
-        'musicas' : musicas_artista,
+        'musicas' : musicas
     }
 
     return render(request, 'todasMusicas.html', dados)
@@ -70,12 +71,16 @@ def musica(request, musica_id):
 
 
 def dashboard(request):
-    ''' Lista de musicas criadas por Usuario Logado'''
+    ''' Lista de playlists/musicas criadas por Usuario Logado'''
+    lista_playlists = Playlist.objects.order_by('-playlist_data')
     lista_musicas = Musica.objects.order_by('-data_musica')
+    
     user= get_object_or_404(User, pk=request.user.id)
+    playlists = lista_playlists.filter(user=user)
     musicas = lista_musicas.filter(user=user)
     dados = {
-        'musicas' : musicas
+        'musicas' : musicas,
+        'playlists': playlists,
     }
     
     return render(request, 'dashboard.html', dados)

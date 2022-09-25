@@ -1,52 +1,59 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
     <main>
         
-
-        <div class=" container">
+        {% if playlists %}
+        <div class=" container"> 
+            <p>Minhas Playlists: </p>
             
+            <div class="container">
+                <ul class="lista_de_musicas">     
+                    {% for playlist in playlists %}
+                    <li class="listaMusicas__musica justify-content-between" style="max-width: 100%;">       
+                            <a href="{% url 'add_M_Playlist' playlist.id %}"><img src="{% static 'img/icones/playlist.png' %}" alt="" class="rounded-top musica__img" ></a>
+                            <a href="{% url 'add_M_Playlist' playlist.id %}" class="musica__titulo me-3"><p >{{ playlist.playlist_name }} <span class="fst-italic"> : </span> {{playlist.playlist_data}}</p></a>  
+                            <div class="d-flex" style="margin-left: auto;">
+                                <div class="vr "></div>                            
+                                <div class="d-flex flex-column justify-content-center col-2">
+                                    <a href="#"><img class="ms-3" src="static/img/icones/contract.png" style="width: 24px; height: 24px;" alt="" ></a>
+                                    <a href="{% url 'deletarPlaylist' playlist.id %}"><img class="ms-3" src="static/img/icones/delete.png" style="width: 24px; height: 24px;" alt=""></a> 
+                                </div>
+                            </div>                      
+                    </li>                              
+                    {% endfor %}            
+                </ul>           
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="container">
+            <hr>
+        </div>
+
+        {% if musicas %}
+        <div class=" container">           
             <p>Minhas musicas: </p>
-            
-
             <div class="container">
                 <ul class="lista_de_musicas">
-                    {% if musicas %}
                     {% for musica in musicas %}
-                    <li class="listaMusicas__musica justify-content-between" style="max-width: 100%;">
-                        
-                            <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="rounded-top musica__img" ></a>
-                            <a href="{% url 'musica' musica.id %}" class="musica__titulo me-3"><p >{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>  
-                            <div class="d-flex" style="margin-left: auto;">
-                                <div class="vr "></div>
-                            
-                                <div class="d-flex flex-column justify-content-center col-2">
-                                    <a href="{% url 'editarMusica' musica.id %}"><img class="ms-3" src="static/img/icones/contract.png" style="width: 24px; height: 24px;" alt="" ></a>
-                                    <a href="{% url 'deletarMusica' musica.id %}"><img class="ms-3" src="static/img/icones/delete.png" style="width: 24px; height: 24px;" alt=""></a> 
-                                </div>
+                    <li class="listaMusicas__musica justify-content-between" style="max-width: 100%;">                
+                        <a href="{% url 'musica' musica.id %}"><img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class="rounded-top musica__img" ></a>
+                        <a href="{% url 'musica' musica.id %}" class="musica__titulo me-3"><p >{{ musica.titulo_musica }} <span class="fst-italic">by </span> {{musica.nome_artista}}</p></a>  
+                        <div class="d-flex" style="margin-left: auto;">
+                            <div class="vr "></div>              
+                            <div class="d-flex flex-column justify-content-center col-2">
+                                <a href="{% url 'editarMusica' musica.id %}"><img class="ms-3" src="static/img/icones/contract.png" style="width: 24px; height: 24px;" alt="" ></a>
+                                <a href="{% url 'deletarMusica' musica.id %}"><img class="ms-3" src="static/img/icones/delete.png" style="width: 24px; height: 24px;" alt=""></a> 
                             </div>
-                        
+                        </div>                      
                     </li>   
-                        
-                        <!-- <div class="">
-                            <a href="{% url 'editarMusica' musica.id %}"><button type="button" class="btn btn-outline-dark border-1 rounded-pill btn-sm ">Editar Musica</button></a>
-                            <a href="{% url 'deletarMusica' musica.id %}"><button type="button" class="btn btn-outline-dark border-1 rounded-pill btn-sm">Deletar Musica</button></a>
-                        </div> -->
-                      
-                            
                     {% endfor %}
-                    {% else %}
-                    <li class="listaMusicas__musica">
-                        <img src="{{ musica.nome_artista.artista_pic.url }}" alt="" class=" musica__img">
-                        <a href="{% url 'dashboard' %}" ><p class="musica__titulo">Nenhum resultado encontrado. Tente novamente</p></a>
-                                
-                    </li>
-                    
-                    {% endif %}            
-                
-                </ul>
-            
+                </ul>           
             </div>
+        {% endif %}  
+        
+        
     </main>
     
 {% endblock %}

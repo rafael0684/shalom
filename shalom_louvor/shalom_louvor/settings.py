@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['rafael0684.pythonanywhere.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'playlist',
     'artista',
     'louvor',
     'usuarios',

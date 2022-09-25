@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container max-width-500">
+        <form action="{% url 'criarPlaylist' %}" class="" method="POST" role="form">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="playlist_name" class="form-label">Nome da Playlist:</label>
+                <input style="max-width: 500px ;" type="text" id="playlist_name" class="form-control" name = 'playlist_name' class="form-control" placeholder="Ex: Reuniao de Sabado...">
+            </div>
+            <div class="mb-3">
+                <label for="playlist_data" class="form-label">Data de apresentacao:</label>
+                <input style="max-width: max-content;" type="date" id="playlist_data" class="form-control" name = 'playlist_data' class="form-control">
+            </div>
+            
+            <div class="mb-3">
+                <div class="modal-footer justify-content-center" style="gap: 1em; max-width: 500px;">
+                <button class="btn btn-outline-dark border-1 rounded-pill btn-lg" type="post">Salvar Playlist</button><br><br>
+            </div>
+        </form>
+    </div>
+{% endblock %}
